@@ -7,7 +7,7 @@ Clearpath Husky system installation with Ubuntu 16.04 and ROS Kinetic
 
 * Install prerequisite packages
 ```sh
-sudo apt install ros-kinetic-ur5-description ros-kinetic-controller-manager ros-kinetic-robot-localization ros-kinetic-interactive-marker-twist-server ros-kinetic-twist-mux ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller
+sudo apt install ros-kinetic-lms1xx ros-kinetic-ur5-description ros-kinetic-controller-manager ros-kinetic-robot-localization ros-kinetic-interactive-marker-twist-server ros-kinetic-twist-mux ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller
 ```
 * Clone some packages to catkin_ws
 ```sh
