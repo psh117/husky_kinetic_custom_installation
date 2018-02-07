@@ -27,3 +27,6 @@ sudo vi /etc/udev/rules.d/90-clearpath.rules
 # Udev rule for the Prolific Serial-to-USB adapter shipped standard with Husky
 SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Prolific*", SYMLINK+="prolific prolific_$attr{devpath}", MODE="0666"
 ```
+```sh
+sudo udevadm control --reload-rules && sudo service udev restart && sudo udevadm trigger
+```
