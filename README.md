@@ -30,3 +30,32 @@ SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Prolific*", SYMLINK+="prolific prolific
 ```sh
 sudo udevadm control --reload-rules && sudo service udev restart && sudo udevadm trigger
 ```
+
+## How to setup a Dualshock 4 wireless controller 
+* Reference: https://github.com/ros-drivers/joystick_drivers/issues/84
+* Install some packages
+```sh
+sudo apt install python-pip
+sudo pip install ds4drv
+```
+* Pair your Dualshock 4 controller
+* Create or copy the udev file (https://github.com/chrippa/ds4drv/blob/master/udev/50-ds4drv.rules)
+```sh
+sudo vi /etc/udev/rules.d/49-ds4drv.rules
+```
+```
+KERNEL=="uinput", MODE="0666"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="05c4", MODE="0666"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:054C:05C4.*", MODE="0666"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="09cc", MODE="0666"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="0005:054C:09CC.*", MODE="0666"
+```
+
+* Reload udevadm
+```sh
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+* Run ds4drv
+```sh
+ds4drv --hidraw
+```
